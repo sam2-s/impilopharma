@@ -1,6 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import heroLab from "@/assets/hero-lab.jpg";
-import womensHealth from "@/assets/womens-health.jpg";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -48,18 +46,22 @@ export const Route = createFileRoute("/")({
 
 const focusAreas = [
   {
+    n: "01",
     title: "Fertility",
     body: "Formulations that support couples through conception, prescribed alongside specialist fertility care.",
   },
   {
+    n: "02",
     title: "Pregnancy",
     body: "Supplements and medications developed for maternal nutrition and safe antenatal management.",
   },
   {
+    n: "03",
     title: "Lactation",
     body: "Post-natal support for nursing mothers, focused on recovery, comfort and infant wellbeing.",
   },
   {
+    n: "04",
     title: "Women's Health",
     body: "Everyday therapies across a woman's life stages, from adolescence through menopause.",
   },
@@ -73,95 +75,127 @@ const catalogue = [
   { name: "Tissue Tapes", note: "Wound care and dressing" },
 ];
 
-const facts = [
+const facts: [string, string][] = [
   ["Incorporated", "5 January 2015"],
   ["CIN", "U24232KA2015PTC078093"],
   ["Nature of business", "Manufacturer & Wholesaler"],
   ["Legal status", "Private Limited Company"],
-  ["Status", "Active"],
+  ["Company status", "Active"],
+  ["Headquarters", "Rajajinagar, Bengaluru"],
+];
+
+const navLinks = [
+  ["About", "#about"],
+  ["Therapy areas", "#focus"],
+  ["Products", "#products"],
+  ["Contact", "#contact"],
 ];
 
 function Index() {
   return (
     <div className="min-h-screen bg-background font-sans text-foreground antialiased">
-      <header className="sticky top-0 z-30 border-b border-border/70 bg-background/85 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <a href="#top" className="flex items-baseline gap-2">
-            <span className="font-display text-xl tracking-tight text-primary">Impilo</span>
-            <span className="text-[0.68rem] uppercase tracking-[0.22em] text-muted-foreground">
-              Pharmaceuticals
+      <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur">
+        <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-6 py-4 lg:px-10">
+          <a href="#top" className="flex min-w-0 items-center gap-3">
+            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-navy font-display text-sm text-primary-foreground">
+              I
+            </span>
+            <span className="min-w-0">
+              <span className="block truncate font-display text-base leading-tight text-navy">
+                Impilo Pharmaceuticals
+              </span>
+              <span className="block text-[0.6rem] uppercase tracking-[0.24em] text-muted-foreground">
+                Bengaluru · Est. 2015
+              </span>
             </span>
           </a>
-          <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
-            <a href="#about" className="transition-colors hover:text-primary">
-              About
+          <div className="flex items-center gap-8">
+            <nav className="hidden items-center gap-7 text-[0.8rem] tracking-wide text-muted-foreground lg:flex">
+              {navLinks.map(([label, href]) => (
+                <a key={href} href={href} className="transition-colors hover:text-teal">
+                  {label}
+                </a>
+              ))}
+            </nav>
+            <a
+              href="#contact"
+              className="shrink-0 rounded-xs bg-navy px-5 py-2.5 text-[0.8rem] font-medium tracking-wide text-primary-foreground transition-colors hover:bg-navy-mid"
+            >
+              Enquire
             </a>
-            <a href="#focus" className="transition-colors hover:text-primary">
-              Therapy areas
-            </a>
-            <a href="#products" className="transition-colors hover:text-primary">
-              Products
-            </a>
-            <a href="#contact" className="transition-colors hover:text-primary">
-              Contact
-            </a>
-          </nav>
-          <a
-            href="tel:+919980311983"
-            className="rounded-sm bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
-          >
-            Enquire
-          </a>
+          </div>
         </div>
       </header>
 
       <main id="top">
-        <section className="mx-auto grid max-w-6xl items-center gap-12 px-6 pt-16 pb-20 md:grid-cols-[1.05fr_1fr] md:pt-24">
-          <div>
-            <p className="text-[0.68rem] uppercase tracking-[0.28em] text-muted-foreground">
-              Bengaluru, Karnataka · Since 2015
+        {/* Split-screen hero */}
+        <section className="grid lg:min-h-[calc(100vh-73px)] lg:grid-cols-2">
+          <div
+            className="flex flex-col justify-center px-6 py-20 lg:px-16 lg:py-24"
+            style={{ background: "var(--gradient-navy)" }}
+          >
+            <p className="text-[0.65rem] uppercase tracking-[0.32em] text-aqua">
+              Pharmaceutical manufacturing
             </p>
-            <h1 className="mt-6 font-display text-4xl leading-[1.08] tracking-tight text-primary md:text-6xl">
-              Medicine dedicated to women's health.
+            <h1 className="mt-8 font-display text-[2.4rem] leading-[1.15] text-primary-foreground sm:text-5xl lg:text-[3.4rem]">
+              Medicine dedicated to
+              <em className="not-italic text-aqua"> women's health.</em>
             </h1>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">
+            <p className="mt-8 max-w-md text-[0.95rem] leading-relaxed text-primary-foreground/70">
               Impilo Pharmaceuticals Pvt Ltd develops and supplies formulations across fertility,
               pregnancy, lactation and women's healthcare — built on integrity, clinical rigour and
               continuous research.
             </p>
-            <div className="mt-9 flex flex-wrap gap-3">
+            <div className="mt-10 flex flex-wrap gap-3">
               <a
                 href="#products"
-                className="rounded-sm bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+                className="rounded-xs bg-aqua px-7 py-3.5 text-sm font-medium text-navy transition-opacity hover:opacity-90"
               >
                 View our range
               </a>
               <a
                 href="#contact"
-                className="rounded-sm border border-border px-6 py-3 text-sm font-medium text-primary transition-colors hover:bg-secondary"
+                className="rounded-xs border border-primary-foreground/25 px-7 py-3.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-foreground/10"
               >
                 Talk to us
               </a>
             </div>
+            <dl className="mt-16 grid grid-cols-3 gap-6 border-t border-primary-foreground/15 pt-8">
+              {[
+                ["11+", "Years operating"],
+                ["5", "Product lines"],
+                ["B2B", "Wholesale supply"],
+              ].map(([v, k]) => (
+                <div key={k}>
+                  <dt className="font-display text-2xl text-aqua">{v}</dt>
+                  <dd className="mt-1 text-[0.68rem] uppercase tracking-[0.14em] text-primary-foreground/60">
+                    {k}
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </div>
-          <div className="relative">
+          <div className="relative min-h-[320px] lg:min-h-full">
             <img
-              src={heroLab}
+              src="/images/hero-lab.jpg"
               alt="Pharmaceutical laboratory bench with vials and tablet blister packs"
               width={1600}
               height={1104}
-              className="w-full rounded-sm object-cover"
-              style={{ boxShadow: "var(--shadow-soft)" }}
+              className="absolute inset-0 h-full w-full object-cover"
             />
           </div>
         </section>
 
-        <section id="about" className="border-y border-border bg-secondary/40">
-          <div className="mx-auto grid max-w-6xl gap-10 px-6 py-20 md:grid-cols-[0.9fr_1.1fr]">
-            <h2 className="font-display text-3xl tracking-tight text-primary md:text-4xl">
-              A small company with a long-term commitment
-            </h2>
-            <div className="space-y-5 text-base leading-relaxed text-muted-foreground">
+        {/* About */}
+        <section id="about" className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
+          <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr]">
+            <div>
+              <p className="text-[0.65rem] uppercase tracking-[0.28em] text-teal">About us</p>
+              <h2 className="mt-6 font-display text-3xl leading-tight text-navy md:text-[2.5rem]">
+                A small company with a long-term commitment
+              </h2>
+            </div>
+            <div className="space-y-6 text-base leading-relaxed text-muted-foreground">
               <p>
                 Incorporated in January 2015 and headquartered in Rajajinagar, Bengaluru, Impilo
                 Pharmaceuticals Private Limited manufactures and wholesales pharmaceutical
@@ -169,113 +203,139 @@ function Index() {
               </p>
               <p>
                 Our work centres on the health of women and their families at every stage of life.
-                Integrity, excellence, innovation and research guide the products we bring to
+                Integrity, excellence, innovation and research guide every product we bring to
                 market.
               </p>
-              <dl className="grid gap-x-8 gap-y-4 border-t border-border pt-6 sm:grid-cols-2">
-                {facts.map(([k, v]) => (
-                  <div key={k}>
-                    <dt className="text-[0.68rem] uppercase tracking-[0.18em] text-muted-foreground">
-                      {k}
-                    </dt>
-                    <dd className="mt-1 text-sm text-foreground">{v}</dd>
-                  </div>
+            </div>
+          </div>
+          <dl className="mt-16 grid gap-px overflow-hidden border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+            {facts.map(([k, v]) => (
+              <div key={k} className="bg-card p-7">
+                <dt className="text-[0.62rem] uppercase tracking-[0.2em] text-muted-foreground">
+                  {k}
+                </dt>
+                <dd className="mt-3 text-[0.95rem] text-navy">{v}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+
+        {/* Therapy areas */}
+        <section id="focus" className="bg-navy">
+          <div className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
+            <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr]">
+              <div>
+                <p className="text-[0.65rem] uppercase tracking-[0.28em] text-aqua">
+                  Therapy areas
+                </p>
+                <h2 className="mt-6 font-display text-3xl leading-tight text-primary-foreground md:text-[2.5rem]">
+                  Care across every stage of life
+                </h2>
+              </div>
+              <div className="grid gap-px bg-primary-foreground/15 sm:grid-cols-2">
+                {focusAreas.map((f) => (
+                  <article key={f.title} className="bg-navy p-8">
+                    <span className="font-display text-sm text-aqua">{f.n}</span>
+                    <h3 className="mt-4 font-display text-xl text-primary-foreground">{f.title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-primary-foreground/65">
+                      {f.body}
+                    </p>
+                  </article>
                 ))}
-              </dl>
+              </div>
             </div>
           </div>
         </section>
 
-        <section id="focus" className="mx-auto max-w-6xl px-6 py-20">
-          <h2 className="font-display text-3xl tracking-tight text-primary md:text-4xl">
-            Therapy areas
-          </h2>
-          <div className="mt-10 grid gap-px overflow-hidden rounded-sm border border-border bg-border sm:grid-cols-2">
-            {focusAreas.map((f) => (
-              <article key={f.title} className="bg-card p-8">
-                <h3 className="font-display text-xl text-primary">{f.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{f.body}</p>
-              </article>
-            ))}
+        {/* Quote / image split */}
+        <section className="grid lg:grid-cols-2">
+          <div className="relative min-h-[300px] lg:min-h-[520px]">
+            <img
+              src="/images/womens-health.jpg"
+              alt="Mother holding her newborn baby"
+              width={1200}
+              height={912}
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
           </div>
-        </section>
-
-        <section className="mx-auto grid max-w-6xl items-center gap-12 px-6 pb-20 md:grid-cols-2">
-          <img
-            src={womensHealth}
-            alt="Mother holding her newborn baby"
-            width={1200}
-            height={912}
-            loading="lazy"
-            className="w-full rounded-sm object-cover"
-            style={{ boxShadow: "var(--shadow-soft)" }}
-          />
-          <blockquote className="font-display text-2xl leading-snug tracking-tight text-primary md:text-3xl">
-            “Impilo” means health.
-            <span className="mt-4 block font-sans text-base font-normal leading-relaxed text-muted-foreground">
+          <div className="flex flex-col justify-center bg-secondary px-6 py-20 lg:px-16">
+            <blockquote className="font-display text-2xl leading-snug text-navy md:text-[2rem]">
+              “Impilo” means health.
+            </blockquote>
+            <p className="mt-6 max-w-md text-base leading-relaxed text-muted-foreground">
               It is the standard we hold ourselves to — every batch, every prescription, every
               family we serve.
-            </span>
-          </blockquote>
-        </section>
-
-        <section id="products" className="border-y border-border bg-secondary/40">
-          <div className="mx-auto max-w-6xl px-6 py-20">
-            <h2 className="font-display text-3xl tracking-tight text-primary md:text-4xl">
-              Products &amp; supplies
-            </h2>
-            <ul className="mt-10 divide-y divide-border border-y border-border">
-              {catalogue.map((p) => (
-                <li key={p.name} className="flex flex-wrap items-baseline justify-between gap-2 py-5">
-                  <span className="text-lg text-foreground">{p.name}</span>
-                  <span className="text-sm text-muted-foreground">{p.note}</span>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-6 text-sm text-muted-foreground">
-              Bulk and wholesale enquiries welcome. Availability may vary by region and
-              prescription requirement.
             </p>
           </div>
         </section>
 
-        <section id="contact" className="mx-auto max-w-6xl px-6 py-20">
-          <div className="grid gap-10 md:grid-cols-2">
+        {/* Products */}
+        <section id="products" className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
+          <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr]">
             <div>
-              <h2 className="font-display text-3xl tracking-tight text-primary md:text-4xl">
+              <p className="text-[0.65rem] uppercase tracking-[0.28em] text-teal">Portfolio</p>
+              <h2 className="mt-6 font-display text-3xl leading-tight text-navy md:text-[2.5rem]">
+                Products &amp; supplies
+              </h2>
+              <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
+                Bulk and wholesale enquiries welcome. Availability may vary by region and
+                prescription requirement.
+              </p>
+            </div>
+            <ul className="border-t border-border">
+              {catalogue.map((p) => (
+                <li
+                  key={p.name}
+                  className="flex flex-wrap items-baseline justify-between gap-2 border-b border-border py-6"
+                >
+                  <span className="font-display text-lg text-navy">{p.name}</span>
+                  <span className="text-sm text-muted-foreground">{p.note}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        {/* Contact */}
+        <section id="contact" className="bg-secondary">
+          <div className="mx-auto grid max-w-7xl gap-14 px-6 py-24 lg:grid-cols-2 lg:px-10">
+            <div>
+              <p className="text-[0.65rem] uppercase tracking-[0.28em] text-teal">Contact</p>
+              <h2 className="mt-6 font-display text-3xl leading-tight text-navy md:text-[2.5rem]">
                 Get in touch
               </h2>
-              <p className="mt-4 max-w-md text-base leading-relaxed text-muted-foreground">
+              <p className="mt-6 max-w-md text-base leading-relaxed text-muted-foreground">
                 For product enquiries, distribution partnerships or regulatory documentation, reach
                 our Bengaluru office.
               </p>
             </div>
-            <div className="space-y-6 text-sm">
-              <div>
-                <p className="text-[0.68rem] uppercase tracking-[0.18em] text-muted-foreground">
+            <div className="grid gap-8 sm:grid-cols-2">
+              <div className="sm:col-span-2">
+                <p className="text-[0.62rem] uppercase tracking-[0.2em] text-muted-foreground">
                   Registered office
                 </p>
-                <address className="mt-2 not-italic leading-relaxed text-foreground">
+                <address className="mt-3 not-italic leading-relaxed text-navy">
                   Shed No. 101, 1st Floor, Industrial Estate,
                   <br />
                   Rajajinagar, Bengaluru, Karnataka 560010, India
                 </address>
               </div>
               <div>
-                <p className="text-[0.68rem] uppercase tracking-[0.18em] text-muted-foreground">
+                <p className="text-[0.62rem] uppercase tracking-[0.2em] text-muted-foreground">
                   Phone
                 </p>
-                <a href="tel:+919980311983" className="mt-2 block text-foreground hover:text-primary">
+                <a href="tel:+919980311983" className="mt-3 block text-navy hover:text-teal">
                   +91 99803 11983
                 </a>
               </div>
-              <div>
-                <p className="text-[0.68rem] uppercase tracking-[0.18em] text-muted-foreground">
+              <div className="min-w-0">
+                <p className="text-[0.62rem] uppercase tracking-[0.2em] text-muted-foreground">
                   Email
                 </p>
                 <a
                   href="mailto:impilopharma@gmail.com"
-                  className="mt-2 block text-foreground hover:text-primary"
+                  className="mt-3 block truncate text-navy hover:text-teal"
                 >
                   impilopharma@gmail.com
                 </a>
@@ -285,8 +345,8 @@ function Index() {
         </section>
       </main>
 
-      <footer className="border-t border-border">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-6 py-8 text-xs text-muted-foreground">
+      <footer className="bg-navy">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-6 py-8 text-xs text-primary-foreground/55 lg:px-10">
           <span>© {new Date().getFullYear()} Impilo Pharmaceuticals Private Limited</span>
           <span>CIN U24232KA2015PTC078093</span>
         </div>
