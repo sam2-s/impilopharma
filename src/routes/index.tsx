@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import impiloLogo from "@/assets/impilo-logo.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
