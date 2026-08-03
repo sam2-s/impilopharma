@@ -438,7 +438,15 @@ function Index() {
       </main>
 
       <footer className="mx-auto max-w-6xl px-4 pb-8 sm:px-6">
-        <div className="glass flex flex-wrap items-center justify-between gap-3 rounded-3xl px-6 py-5 text-xs font-medium text-muted-foreground">
+        <div className="glass flex flex-wrap items-center justify-between gap-4 rounded-3xl px-6 py-5 text-xs font-medium text-muted-foreground">
+          <img
+            src={impiloLogo}
+            alt="Impilo Pharmaceuticals logo"
+            width={1363}
+            height={396}
+            loading="lazy"
+            className="h-7 w-auto"
+          />
           <span>© {new Date().getFullYear()} Impilo Pharmaceuticals Private Limited</span>
           <span>CIN U24232KA2015PTC078093</span>
         </div>
