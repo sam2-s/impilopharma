@@ -152,16 +152,15 @@ function Index() {
       <header className="sticky top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-5">
         <div className="glass mx-auto flex max-w-6xl items-center gap-4 rounded-3xl px-4 py-3 sm:px-6">
           <a href="#top" className="flex min-w-0 flex-1 items-center gap-3">
-            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-2xl bg-linear-to-br from-teal to-navy text-sm font-bold text-primary-foreground shadow-lg">
-              i
-            </span>
-            <span className="min-w-0">
-              <span className="block truncate text-[0.95rem] font-bold tracking-tight text-navy">
-                Impilo
-              </span>
-              <span className="block text-[0.58rem] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-                Pharmaceuticals
-              </span>
+            <img
+              src="/images/impilo-logo.png"
+              alt="Impilo Pharmaceuticals logo"
+              width={1363}
+              height={396}
+              className="h-8 w-auto shrink-0 sm:h-9"
+            />
+            <span className="hidden text-[0.58rem] font-semibold uppercase tracking-[0.2em] text-muted-foreground sm:block">
+              Pharmaceuticals Pvt. Ltd.
             </span>
           </a>
           <nav className="hidden items-center gap-1 lg:flex">
@@ -438,7 +437,15 @@ function Index() {
       </main>
 
       <footer className="mx-auto max-w-6xl px-4 pb-8 sm:px-6">
-        <div className="glass flex flex-wrap items-center justify-between gap-3 rounded-3xl px-6 py-5 text-xs font-medium text-muted-foreground">
+        <div className="glass flex flex-wrap items-center justify-between gap-4 rounded-3xl px-6 py-5 text-xs font-medium text-muted-foreground">
+          <img
+            src="/images/impilo-logo.png"
+            alt="Impilo Pharmaceuticals logo"
+            width={1363}
+            height={396}
+            loading="lazy"
+            className="h-7 w-auto"
+          />
           <span>© {new Date().getFullYear()} Impilo Pharmaceuticals Private Limited</span>
           <span>CIN U24232KA2015PTC078093</span>
         </div>
