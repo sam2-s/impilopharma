@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import impiloLogo from "@/assets/impilo-logo.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -154,7 +153,7 @@ function Index() {
         <div className="glass mx-auto flex max-w-6xl items-center gap-4 rounded-3xl px-4 py-3 sm:px-6">
           <a href="#top" className="flex min-w-0 flex-1 items-center gap-3">
             <img
-              src={impiloLogo}
+              src="/images/impilo-logo.png"
               alt="Impilo Pharmaceuticals logo"
               width={1363}
               height={396}
@@ -440,7 +439,7 @@ function Index() {
       <footer className="mx-auto max-w-6xl px-4 pb-8 sm:px-6">
         <div className="glass flex flex-wrap items-center justify-between gap-4 rounded-3xl px-6 py-5 text-xs font-medium text-muted-foreground">
           <img
-            src={impiloLogo}
+            src="/images/impilo-logo.png"
             alt="Impilo Pharmaceuticals logo"
             width={1363}
             height={396}
