@@ -148,10 +148,23 @@ const navLinks = [
 
 function Index() {
   return (
-    <div className="mesh-bg min-h-screen font-sans text-foreground antialiased">
+    <div className="mesh-bg relative min-h-screen overflow-x-clip font-sans text-foreground antialiased">
+      {/* floating liquid orbs */}
+      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+        <div className="floaty absolute -left-24 top-24 h-80 w-80 rounded-full bg-aqua/35 blur-3xl" />
+        <div
+          className="floaty absolute -right-20 top-1/3 h-96 w-96 rounded-full bg-teal/25 blur-3xl"
+          style={{ animationDelay: "-5s" }}
+        />
+        <div
+          className="floaty absolute bottom-10 left-1/3 h-72 w-72 rounded-full bg-navy-mid/20 blur-3xl"
+          style={{ animationDelay: "-9s" }}
+        />
+      </div>
+
       <header className="sticky top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-5">
-        <div className="glass mx-auto flex max-w-6xl items-center gap-4 rounded-3xl px-4 py-3 sm:px-6">
-          <a href="#top" className="flex min-w-0 flex-1 items-center gap-3">
+        <div className="glass glass-specular mx-auto flex max-w-6xl items-center gap-4 rounded-[1.75rem] px-4 py-3 sm:px-6">
+          <a href="#top" className="press flex min-w-0 flex-1 items-center gap-3">
             <img
               src="/images/impilo-logo.png"
               alt="Impilo Pharmaceuticals logo"
@@ -163,12 +176,12 @@ function Index() {
               Pharmaceuticals Pvt. Ltd.
             </span>
           </a>
-          <nav className="hidden items-center gap-1 lg:flex">
+          <nav className="glass-thin hidden items-center gap-1 rounded-full p-1 lg:flex">
             {navLinks.map(([label, href]) => (
               <a
                 key={href}
                 href={href}
-                className="rounded-full px-4 py-2 text-[0.82rem] font-medium text-muted-foreground transition-colors hover:bg-white/60 hover:text-navy"
+                className="press rounded-full px-4 py-2 text-[0.82rem] font-medium text-muted-foreground transition-colors hover:bg-white/70 hover:text-navy"
               >
                 {label}
               </a>
@@ -176,12 +189,26 @@ function Index() {
           </nav>
           <a
             href="#contact"
-            className="shrink-0 rounded-full bg-navy px-5 py-2.5 text-[0.8rem] font-semibold text-primary-foreground shadow-lg transition-transform hover:scale-[1.03]"
+            className="press shrink-0 rounded-full bg-navy px-5 py-2.5 text-[0.8rem] font-semibold text-primary-foreground shadow-lg"
           >
             Enquire
           </a>
         </div>
       </header>
+
+      {/* iOS-style floating dock (mobile) */}
+      <nav className="glass glass-specular fixed bottom-4 left-1/2 z-50 flex -translate-x-1/2 items-center gap-1 rounded-full px-2 py-2 lg:hidden">
+        {navLinks.map(([label, href]) => (
+          <a
+            key={href}
+            href={href}
+            className="press rounded-full px-3.5 py-2 text-[0.72rem] font-semibold text-navy"
+          >
+            {label}
+          </a>
+        ))}
+      </nav>
+
 
       <main id="top">
         {/* Hero */}
