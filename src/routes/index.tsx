@@ -233,13 +233,13 @@ function Index() {
               <div className="mt-9 flex flex-wrap gap-3">
                 <a
                   href="#products"
-                  className="rounded-full bg-navy px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-xl transition-transform hover:scale-[1.03]"
+                  className="press rounded-full bg-navy px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-xl"
                 >
                   View our range
                 </a>
                 <a
                   href="#contact"
-                  className="glass glass-hover rounded-full px-7 py-3.5 text-sm font-semibold text-navy"
+                  className="glass glass-specular press rounded-full px-7 py-3.5 text-sm font-semibold text-navy"
                 >
                   Talk to us
                 </a>
@@ -250,7 +250,7 @@ function Index() {
                   ["10", "Brands"],
                   ["B2B", "Wholesale"],
                 ].map(([v, k]) => (
-                  <div key={k} className="glass rounded-3xl px-4 py-5 text-center">
+                  <div key={k} className="glass glass-specular glass-hover rounded-3xl px-4 py-5 text-center">
                     <dt className="text-2xl font-extrabold tracking-tight text-navy">{v}</dt>
                     <dd className="mt-1 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
                       {k}
@@ -260,7 +260,7 @@ function Index() {
               </dl>
             </div>
 
-            <div className="glass relative overflow-hidden rounded-[2.25rem] p-2">
+            <div className="glass glass-specular relative overflow-hidden rounded-[2.25rem] p-2">
               <img
                 src="/images/hero-lab.jpg"
                 alt="Pharmaceutical laboratory bench with vials and tablet blister packs"
@@ -281,7 +281,7 @@ function Index() {
         </section>
 
         {/* About */}
-        <section id="about" className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+        <section id="about" className="reveal mx-auto max-w-6xl px-4 py-16 sm:px-6">
           <div className="glass rounded-[2.25rem] p-7 sm:p-12">
             <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
               <div>
@@ -307,7 +307,7 @@ function Index() {
             </div>
             <dl className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {facts.map(([k, v]) => (
-                <div key={k} className="glass glass-hover rounded-2xl p-5">
+                <div key={k} className="glass glass-specular glass-hover rounded-2xl p-5">
                   <dt className="text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
                     {k}
                   </dt>
@@ -319,7 +319,7 @@ function Index() {
         </section>
 
         {/* Therapy areas */}
-        <section id="focus" className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+        <section id="focus" className="reveal mx-auto max-w-6xl px-4 py-16 sm:px-6">
           <div
             className="relative overflow-hidden rounded-[2.25rem] p-7 sm:p-12"
             style={{ background: "var(--gradient-navy)" }}
@@ -335,7 +335,7 @@ function Index() {
               </h2>
               <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {focusAreas.map((f) => (
-                  <article key={f.title} className="glass-dark glass-hover rounded-3xl p-6">
+                  <article key={f.title} className="glass-dark glass-specular glass-hover rounded-3xl p-6">
                     <span className="text-xs font-bold tracking-widest text-aqua">{f.n}</span>
                     <h3 className="mt-4 text-lg font-bold text-primary-foreground">{f.title}</h3>
                     <p className="mt-3 text-[0.85rem] leading-relaxed text-primary-foreground/70">
@@ -349,7 +349,7 @@ function Index() {
         </section>
 
         {/* Quote / image */}
-        <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+        <section className="reveal mx-auto max-w-6xl px-4 py-16 sm:px-6">
           <div className="grid gap-4 lg:grid-cols-2">
             <div className="glass overflow-hidden rounded-[2.25rem] p-2">
               <img
@@ -374,7 +374,7 @@ function Index() {
         </section>
 
         {/* Products */}
-        <section id="products" className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+        <section id="products" className="reveal mx-auto max-w-6xl px-4 py-16 sm:px-6">
           <div className="max-w-2xl">
             <p className="text-[0.68rem] font-bold uppercase tracking-[0.24em] text-teal">
               Portfolio
@@ -389,7 +389,7 @@ function Index() {
           </div>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {brands.map((p) => (
-              <article key={p.name} className="glass glass-hover flex flex-col rounded-3xl p-6">
+              <article key={p.name} className="glass glass-specular glass-hover flex flex-col rounded-3xl p-6">
                 <div className="flex items-start justify-between gap-3">
                   <h3 className="text-xl font-extrabold tracking-[-0.02em] text-navy">{p.name}</h3>
                   <span className="glass shrink-0 rounded-full px-3 py-1 text-[0.6rem] font-bold uppercase tracking-[0.12em] text-teal">
@@ -414,7 +414,7 @@ function Index() {
         </section>
 
         {/* Contact */}
-        <section id="contact" className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+        <section id="contact" className="reveal mx-auto max-w-6xl px-4 py-16 sm:px-6">
           <div className="glass rounded-[2.25rem] p-7 sm:p-12">
             <div className="grid gap-10 lg:grid-cols-2">
               <div>
@@ -440,7 +440,7 @@ function Index() {
                     Rajajinagar, Bengaluru, Karnataka 560010, India
                   </address>
                 </div>
-                <a href="tel:+919980311983" className="glass glass-hover rounded-2xl p-5">
+                <a href="tel:+919980311983" className="glass glass-specular glass-hover rounded-2xl p-5">
                   <p className="text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
                     Phone
                   </p>
@@ -448,7 +448,7 @@ function Index() {
                 </a>
                 <a
                   href="mailto:impilopharma@gmail.com"
-                  className="glass glass-hover min-w-0 rounded-2xl p-5"
+                  className="glass glass-specular glass-hover min-w-0 rounded-2xl p-5"
                 >
                   <p className="text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
                     Email
@@ -463,7 +463,7 @@ function Index() {
         </section>
       </main>
 
-      <footer className="mx-auto max-w-6xl px-4 pb-8 sm:px-6">
+      <footer className="mx-auto max-w-6xl px-4 pb-24 sm:px-6 lg:pb-8">
         <div className="glass flex flex-wrap items-center justify-between gap-4 rounded-3xl px-6 py-5 text-xs font-medium text-muted-foreground">
           <img
             src="/images/impilo-logo.png"
