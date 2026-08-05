@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import filmAsset from "@/assets/impilo-film.mp4.asset.json";
+
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -305,7 +307,7 @@ function Index() {
                 </p>
               </div>
             </div>
-            <dl className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <dl className="reveal-stagger mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {facts.map(([k, v]) => (
                 <div key={k} className="glass glass-specular glass-hover rounded-2xl p-5">
                   <dt className="text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
@@ -333,7 +335,7 @@ function Index() {
               <h2 className="mt-5 max-w-xl text-3xl font-extrabold leading-tight tracking-[-0.025em] text-primary-foreground md:text-[2.4rem]">
                 Care across every stage of life
               </h2>
-              <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="reveal-stagger mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {focusAreas.map((f) => (
                   <article key={f.title} className="glass-dark glass-specular glass-hover rounded-3xl p-6">
                     <span className="text-xs font-bold tracking-widest text-aqua">{f.n}</span>
@@ -348,6 +350,30 @@ function Index() {
           </div>
         </section>
 
+        {/* Film */}
+        <section className="reveal mx-auto max-w-6xl px-4 py-16 sm:px-6">
+          <div className="glass glass-specular relative overflow-hidden rounded-[2.25rem] p-2">
+            <video
+              src={filmAsset.url}
+              className="scroll-zoom h-[260px] w-full rounded-[1.75rem] object-cover sm:h-[520px]"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-label="Inside Impilo Pharmaceuticals"
+            />
+            <div className="glass absolute bottom-6 left-6 right-6 rounded-2xl px-5 py-4 sm:right-auto sm:max-w-sm">
+              <p className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-teal">
+                Inside Impilo
+              </p>
+              <p className="mt-1 text-sm font-medium text-navy">
+                A look at how we make and move our medicines
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* Quote / image */}
         <section className="reveal mx-auto max-w-6xl px-4 py-16 sm:px-6">
           <div className="grid gap-4 lg:grid-cols-2">
@@ -358,7 +384,7 @@ function Index() {
                 width={1200}
                 height={912}
                 loading="lazy"
-                className="h-[300px] w-full rounded-[1.75rem] object-cover lg:h-full"
+                className="scroll-zoom h-[300px] w-full rounded-[1.75rem] object-cover lg:h-full"
               />
             </div>
             <div className="glass flex flex-col justify-center rounded-[2.25rem] p-8 sm:p-12">
@@ -372,6 +398,7 @@ function Index() {
             </div>
           </div>
         </section>
+
 
         {/* Products */}
         <section id="products" className="reveal mx-auto max-w-6xl px-4 py-16 sm:px-6">
@@ -387,7 +414,7 @@ function Index() {
               requirement.
             </p>
           </div>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="reveal-stagger mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {brands.map((p) => (
               <article key={p.name} className="glass glass-specular glass-hover flex flex-col rounded-3xl p-6">
                 <div className="flex items-start justify-between gap-3">
