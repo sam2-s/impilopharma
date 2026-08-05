@@ -348,6 +348,30 @@ function Index() {
           </div>
         </section>
 
+        {/* Film */}
+        <section className="reveal mx-auto max-w-6xl px-4 py-16 sm:px-6">
+          <div className="glass glass-specular relative overflow-hidden rounded-[2.25rem] p-2">
+            <video
+              src={filmAsset.url}
+              className="scroll-zoom h-[260px] w-full rounded-[1.75rem] object-cover sm:h-[520px]"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-label="Inside Impilo Pharmaceuticals"
+            />
+            <div className="glass absolute bottom-6 left-6 right-6 rounded-2xl px-5 py-4 sm:right-auto sm:max-w-sm">
+              <p className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-teal">
+                Inside Impilo
+              </p>
+              <p className="mt-1 text-sm font-medium text-navy">
+                A look at how we make and move our medicines
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* Quote / image */}
         <section className="reveal mx-auto max-w-6xl px-4 py-16 sm:px-6">
           <div className="grid gap-4 lg:grid-cols-2">
@@ -358,7 +382,7 @@ function Index() {
                 width={1200}
                 height={912}
                 loading="lazy"
-                className="h-[300px] w-full rounded-[1.75rem] object-cover lg:h-full"
+                className="scroll-zoom h-[300px] w-full rounded-[1.75rem] object-cover lg:h-full"
               />
             </div>
             <div className="glass flex flex-col justify-center rounded-[2.25rem] p-8 sm:p-12">
@@ -372,6 +396,7 @@ function Index() {
             </div>
           </div>
         </section>
+
 
         {/* Products */}
         <section id="products" className="reveal mx-auto max-w-6xl px-4 py-16 sm:px-6">
