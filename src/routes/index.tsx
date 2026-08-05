@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import filmAsset from "@/assets/impilo-film.mp4.asset.json";
+
 
 export const Route = createFileRoute("/")({
   component: Index,
