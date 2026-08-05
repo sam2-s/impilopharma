@@ -246,8 +246,8 @@
 @keyframes ios-rise {
   from {
     opacity: 0;
-    transform: translateY(28px) scale(0.975);
-    filter: blur(6px);
+    transform: translateY(38px) scale(0.965);
+    filter: blur(10px);
   }
   to {
     opacity: 1;
@@ -258,9 +258,47 @@
 
 @utility reveal {
   opacity: 0;
-  animation: ios-rise 0.9s var(--ease-ios) forwards;
+  animation: ios-rise 1.15s var(--ease-ios) forwards;
   animation-timeline: view();
-  animation-range: entry 0% cover 22%;
+  animation-range: entry 0% cover 34%;
+}
+
+/* children rise one after another as the section enters */
+@utility reveal-stagger {
+  & > * {
+    opacity: 0;
+    animation: ios-rise 1s var(--ease-ios) forwards;
+    animation-timeline: view();
+    animation-range: entry 5% cover 30%;
+  }
+  & > *:nth-child(2) {
+    animation-range: entry 8% cover 34%;
+  }
+  & > *:nth-child(3) {
+    animation-range: entry 11% cover 38%;
+  }
+  & > *:nth-child(4) {
+    animation-range: entry 14% cover 42%;
+  }
+  & > *:nth-child(n + 5) {
+    animation-range: entry 17% cover 46%;
+  }
+}
+
+/* scroll-linked parallax zoom, used on media */
+@keyframes scroll-zoom {
+  from {
+    transform: scale(1.14) translateY(2%);
+  }
+  to {
+    transform: scale(1) translateY(-2%);
+  }
+}
+
+@utility scroll-zoom {
+  animation: scroll-zoom linear both;
+  animation-timeline: view();
+  animation-range: cover 0% cover 100%;
 }
 
 @keyframes float-orb {
@@ -276,17 +314,20 @@
 }
 
 @utility floaty {
-  animation: float-orb 14s ease-in-out infinite;
+  animation: float-orb 18s cubic-bezier(0.45, 0, 0.25, 1) infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .mesh-bg,
   .floaty,
-  .reveal {
+  .reveal,
+  .scroll-zoom,
+  .reveal-stagger > * {
     animation: none;
     opacity: 1;
   }
 }
+
 
 
 
