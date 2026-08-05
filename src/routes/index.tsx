@@ -307,7 +307,7 @@ function Index() {
                 </p>
               </div>
             </div>
-            <dl className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <dl className="reveal-stagger mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {facts.map(([k, v]) => (
                 <div key={k} className="glass glass-specular glass-hover rounded-2xl p-5">
                   <dt className="text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
@@ -335,7 +335,7 @@ function Index() {
               <h2 className="mt-5 max-w-xl text-3xl font-extrabold leading-tight tracking-[-0.025em] text-primary-foreground md:text-[2.4rem]">
                 Care across every stage of life
               </h2>
-              <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="reveal-stagger mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {focusAreas.map((f) => (
                   <article key={f.title} className="glass-dark glass-specular glass-hover rounded-3xl p-6">
                     <span className="text-xs font-bold tracking-widest text-aqua">{f.n}</span>
@@ -414,7 +414,7 @@ function Index() {
               requirement.
             </p>
           </div>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="reveal-stagger mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {brands.map((p) => (
               <article key={p.name} className="glass glass-specular glass-hover flex flex-col rounded-3xl p-6">
                 <div className="flex items-start justify-between gap-3">
