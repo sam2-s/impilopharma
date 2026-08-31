@@ -153,16 +153,13 @@ function Index() {
     <div className="mesh-bg relative min-h-screen overflow-x-clip font-sans text-foreground antialiased">
       {/* floating liquid orbs */}
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <div className="floaty absolute -left-24 top-24 h-80 w-80 rounded-full bg-aqua/35 blur-3xl" />
+        <div className="floaty absolute -left-24 top-24 h-72 w-72 rounded-full bg-aqua/30 blur-2xl" />
         <div
-          className="floaty absolute -right-20 top-1/3 h-96 w-96 rounded-full bg-teal/25 blur-3xl"
-          style={{ animationDelay: "-5s" }}
-        />
-        <div
-          className="floaty absolute bottom-10 left-1/3 h-72 w-72 rounded-full bg-navy-mid/20 blur-3xl"
-          style={{ animationDelay: "-9s" }}
+          className="floaty absolute -right-20 top-1/3 h-80 w-80 rounded-full bg-teal/20 blur-2xl"
+          style={{ animationDelay: "-7s" }}
         />
       </div>
+
 
       <header className="sticky top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-5">
         <div className="glass glass-specular mx-auto flex max-w-6xl items-center gap-4 rounded-[1.75rem] px-4 py-3 sm:px-6">
