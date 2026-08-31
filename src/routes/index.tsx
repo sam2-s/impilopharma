@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useRef } from "react";
 import filmAsset from "@/assets/impilo-film.mp4.asset.json";
+
 
 
 export const Route = createFileRoute("/")({
