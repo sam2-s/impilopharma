@@ -151,6 +151,22 @@ const navLinks = [
 ];
 
 function Index() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) void el.play().catch(() => {});
+        else el.pause();
+      },
+      { threshold: 0.25 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   return (
     <div className="mesh-bg relative min-h-screen overflow-x-clip font-sans text-foreground antialiased">
       {/* floating liquid orbs */}
