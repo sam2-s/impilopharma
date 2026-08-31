@@ -158,9 +158,10 @@ function Index() {
     if (!el) return;
     const io = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) void el.play().catch(() => {});
+        if (entry?.isIntersecting) void el.play().catch(() => {});
         else el.pause();
       },
+
       { threshold: 0.25 },
     );
     io.observe(el);
