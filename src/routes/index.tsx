@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useRef } from "react";
 import filmAsset from "@/assets/impilo-film.mp4.asset.json";
+
 
 
 export const Route = createFileRoute("/")({
@@ -149,20 +151,34 @@ const navLinks = [
 ];
 
 function Index() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) void el.play().catch(() => {});
+        else el.pause();
+      },
+
+      { threshold: 0.25 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   return (
     <div className="mesh-bg relative min-h-screen overflow-x-clip font-sans text-foreground antialiased">
       {/* floating liquid orbs */}
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <div className="floaty absolute -left-24 top-24 h-80 w-80 rounded-full bg-aqua/35 blur-3xl" />
+        <div className="floaty absolute -left-24 top-24 h-72 w-72 rounded-full bg-aqua/30 blur-2xl" />
         <div
-          className="floaty absolute -right-20 top-1/3 h-96 w-96 rounded-full bg-teal/25 blur-3xl"
-          style={{ animationDelay: "-5s" }}
-        />
-        <div
-          className="floaty absolute bottom-10 left-1/3 h-72 w-72 rounded-full bg-navy-mid/20 blur-3xl"
-          style={{ animationDelay: "-9s" }}
+          className="floaty absolute -right-20 top-1/3 h-80 w-80 rounded-full bg-teal/20 blur-2xl"
+          style={{ animationDelay: "-7s" }}
         />
       </div>
+
 
       <header className="sticky top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-5">
         <div className="glass glass-specular mx-auto flex max-w-6xl items-center gap-4 rounded-[1.75rem] px-4 py-3 sm:px-6">
@@ -268,8 +284,11 @@ function Index() {
                 alt="Pharmaceutical laboratory bench with vials and tablet blister packs"
                 width={1600}
                 height={1104}
+                decoding="async"
+                fetchPriority="high"
                 className="h-[320px] w-full rounded-[1.75rem] object-cover sm:h-[460px]"
               />
+
               <div className="glass absolute bottom-6 left-6 right-6 rounded-2xl px-5 py-4">
                 <p className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-teal">
                   Manufacturing & wholesale
@@ -291,8 +310,9 @@ function Index() {
                   About us
                 </p>
                 <h2 className="mt-5 text-3xl font-extrabold leading-tight tracking-[-0.025em] text-navy md:text-[2.4rem]">
-                  A small company with a long-term commitment
+                  Built on clinical rigour, trusted by clinicians
                 </h2>
+
               </div>
               <div className="space-y-5 text-[1rem] leading-relaxed text-muted-foreground">
                 <p>
@@ -354,15 +374,16 @@ function Index() {
         <section className="reveal mx-auto max-w-6xl px-4 py-16 sm:px-6">
           <div className="glass glass-specular relative overflow-hidden rounded-[2.25rem] p-2">
             <video
+              ref={videoRef}
               src={filmAsset.url}
-              className="scroll-zoom h-[260px] w-full rounded-[1.75rem] object-cover sm:h-[520px]"
-              autoPlay
+              className="h-[260px] w-full rounded-[1.75rem] object-cover sm:h-[520px]"
               muted
               loop
               playsInline
-              preload="metadata"
+              preload="none"
               aria-label="Inside Impilo Pharmaceuticals"
             />
+
             <div className="glass absolute bottom-6 left-6 right-6 rounded-2xl px-5 py-4 sm:right-auto sm:max-w-sm">
               <p className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-teal">
                 Inside Impilo

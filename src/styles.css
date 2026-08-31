@@ -122,20 +122,19 @@
   --color-aqua: var(--aqua);
 }
 
-/* iOS-style liquid glass surfaces */
+/* iOS-style liquid glass surfaces (tuned for GPU cost) */
 @utility glass {
   position: relative;
   background: linear-gradient(
     135deg,
-    color-mix(in oklab, white 70%, transparent),
-    color-mix(in oklab, white 38%, transparent)
+    color-mix(in oklab, white 72%, transparent),
+    color-mix(in oklab, white 44%, transparent)
   );
-  backdrop-filter: blur(32px) saturate(190%) brightness(1.06);
+  backdrop-filter: blur(16px) saturate(160%);
   border: 1px solid color-mix(in oklab, white 68%, transparent);
   box-shadow:
     var(--shadow-glass),
-    inset 0 1px 0 color-mix(in oklab, white 90%, transparent),
-    inset 0 -1px 0 color-mix(in oklab, white 35%, transparent);
+    inset 0 1px 0 color-mix(in oklab, white 90%, transparent);
 }
 
 /* specular sheen sweeping across a glass surface, like iOS lensing */
@@ -154,20 +153,20 @@
       transparent 60%
     );
     opacity: 0;
-    transform: translateX(-30%);
+    transform: translate3d(-30%, 0, 0);
     transition:
-      opacity 0.5s var(--ease-ios),
-      transform 0.9s var(--ease-ios);
+      opacity 0.4s var(--ease-ios),
+      transform 0.8s var(--ease-ios);
   }
   &:hover::before {
     opacity: 1;
-    transform: translateX(30%);
+    transform: translate3d(30%, 0, 0);
   }
 }
 
 @utility glass-thin {
-  background: color-mix(in oklab, white 42%, transparent);
-  backdrop-filter: blur(20px) saturate(170%);
+  background: color-mix(in oklab, white 50%, transparent);
+  backdrop-filter: blur(12px) saturate(150%);
   border: 1px solid color-mix(in oklab, white 55%, transparent);
   box-shadow: inset 0 1px 0 color-mix(in oklab, white 80%, transparent);
 }
@@ -176,10 +175,10 @@
   position: relative;
   background: linear-gradient(
     135deg,
-    color-mix(in oklab, white 20%, transparent),
-    color-mix(in oklab, white 6%, transparent)
+    color-mix(in oklab, white 22%, transparent),
+    color-mix(in oklab, white 8%, transparent)
   );
-  backdrop-filter: blur(30px) saturate(170%);
+  backdrop-filter: blur(14px) saturate(150%);
   border: 1px solid color-mix(in oklab, white 24%, transparent);
   box-shadow:
     var(--shadow-glass-lg),
@@ -188,23 +187,23 @@
 
 @utility glass-hover {
   transition:
-    transform 0.45s var(--ease-ios),
-    box-shadow 0.45s var(--ease-ios);
+    transform 0.4s var(--ease-ios),
+    box-shadow 0.4s var(--ease-ios);
   &:hover {
-    transform: translateY(-5px) scale(1.012);
+    transform: translate3d(0, -5px, 0);
     box-shadow: var(--shadow-glass-lg);
   }
   &:active {
-    transform: translateY(-1px) scale(0.985);
+    transform: translate3d(0, -1px, 0) scale(0.99);
     transition-duration: 0.12s;
   }
 }
 
 /* iOS pressable feedback */
 @utility press {
-  transition: transform 0.35s var(--ease-spring);
+  transition: transform 0.3s var(--ease-spring);
   &:hover {
-    transform: scale(1.035);
+    transform: scale(1.03);
   }
   &:active {
     transform: scale(0.95);
@@ -212,53 +211,31 @@
   }
 }
 
+/* static aurora field — no repainting gradient animation */
 @utility mesh-bg {
   position: relative;
   background:
-    radial-gradient(60% 50% at 12% 8%, oklch(0.85 0.11 205 / 0.6), transparent 70%),
-    radial-gradient(55% 45% at 88% 12%, oklch(0.82 0.1 280 / 0.55), transparent 70%),
-    radial-gradient(60% 55% at 75% 92%, oklch(0.88 0.1 165 / 0.5), transparent 70%),
-    radial-gradient(50% 45% at 20% 85%, oklch(0.86 0.09 330 / 0.4), transparent 70%),
+    radial-gradient(60% 50% at 12% 8%, oklch(0.85 0.11 205 / 0.55), transparent 70%),
+    radial-gradient(55% 45% at 88% 12%, oklch(0.82 0.1 280 / 0.5), transparent 70%),
+    radial-gradient(60% 55% at 75% 92%, oklch(0.88 0.1 165 / 0.45), transparent 70%),
     var(--background);
-  background-size: 180% 180%;
-  animation: aurora-drift 26s var(--ease-ios) infinite alternate;
-}
-
-@keyframes aurora-drift {
-  0% {
-    background-position:
-      0% 0%,
-      100% 0%,
-      100% 100%,
-      0% 100%,
-      0 0;
-  }
-  100% {
-    background-position:
-      18% 12%,
-      82% 14%,
-      78% 88%,
-      14% 82%,
-      0 0;
-  }
+  background-attachment: fixed;
 }
 
 @keyframes ios-rise {
   from {
     opacity: 0;
-    transform: translateY(38px) scale(0.965);
-    filter: blur(10px);
+    transform: translate3d(0, 32px, 0);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
 @utility reveal {
   opacity: 0;
-  animation: ios-rise 1.15s var(--ease-ios) forwards;
+  animation: ios-rise 0.9s var(--ease-ios) forwards;
   animation-timeline: view();
   animation-range: entry 0% cover 34%;
 }
@@ -267,7 +244,7 @@
 @utility reveal-stagger {
   & > * {
     opacity: 0;
-    animation: ios-rise 1s var(--ease-ios) forwards;
+    animation: ios-rise 0.8s var(--ease-ios) forwards;
     animation-timeline: view();
     animation-range: entry 5% cover 30%;
   }
@@ -277,21 +254,18 @@
   & > *:nth-child(3) {
     animation-range: entry 11% cover 38%;
   }
-  & > *:nth-child(4) {
+  & > *:nth-child(n + 4) {
     animation-range: entry 14% cover 42%;
-  }
-  & > *:nth-child(n + 5) {
-    animation-range: entry 17% cover 46%;
   }
 }
 
 /* scroll-linked parallax zoom, used on media */
 @keyframes scroll-zoom {
   from {
-    transform: scale(1.14) translateY(2%);
+    transform: scale(1.1);
   }
   to {
-    transform: scale(1) translateY(-2%);
+    transform: scale(1);
   }
 }
 
@@ -303,22 +277,22 @@
 
 @keyframes float-orb {
   0% {
-    transform: translate3d(0, 0, 0) scale(1);
+    transform: translate3d(0, 0, 0);
   }
   50% {
-    transform: translate3d(18px, -26px, 0) scale(1.08);
+    transform: translate3d(16px, -24px, 0);
   }
   100% {
-    transform: translate3d(0, 0, 0) scale(1);
+    transform: translate3d(0, 0, 0);
   }
 }
 
 @utility floaty {
-  animation: float-orb 18s cubic-bezier(0.45, 0, 0.25, 1) infinite;
+  animation: float-orb 22s ease-in-out infinite;
+  will-change: transform;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .mesh-bg,
   .floaty,
   .reveal,
   .scroll-zoom,
@@ -327,6 +301,16 @@
     opacity: 1;
   }
 }
+
+/* fall back to a cheap translucent surface where backdrop-filter is unsupported */
+@supports not (backdrop-filter: blur(1px)) {
+  .glass,
+  .glass-thin,
+  .glass-dark {
+    background: color-mix(in oklab, white 82%, transparent);
+  }
+}
+
 
 
 
