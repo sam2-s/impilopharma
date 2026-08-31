@@ -265,8 +265,11 @@ function Index() {
                 alt="Pharmaceutical laboratory bench with vials and tablet blister packs"
                 width={1600}
                 height={1104}
+                decoding="async"
+                fetchPriority="high"
                 className="h-[320px] w-full rounded-[1.75rem] object-cover sm:h-[460px]"
               />
+
               <div className="glass absolute bottom-6 left-6 right-6 rounded-2xl px-5 py-4">
                 <p className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-teal">
                   Manufacturing & wholesale
