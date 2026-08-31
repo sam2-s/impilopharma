@@ -352,15 +352,16 @@ function Index() {
         <section className="reveal mx-auto max-w-6xl px-4 py-16 sm:px-6">
           <div className="glass glass-specular relative overflow-hidden rounded-[2.25rem] p-2">
             <video
+              ref={videoRef}
               src={filmAsset.url}
-              className="scroll-zoom h-[260px] w-full rounded-[1.75rem] object-cover sm:h-[520px]"
-              autoPlay
+              className="h-[260px] w-full rounded-[1.75rem] object-cover sm:h-[520px]"
               muted
               loop
               playsInline
-              preload="metadata"
+              preload="none"
               aria-label="Inside Impilo Pharmaceuticals"
             />
+
             <div className="glass absolute bottom-6 left-6 right-6 rounded-2xl px-5 py-4 sm:right-auto sm:max-w-sm">
               <p className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-teal">
                 Inside Impilo
