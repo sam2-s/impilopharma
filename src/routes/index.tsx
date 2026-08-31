@@ -288,8 +288,9 @@ function Index() {
                   About us
                 </p>
                 <h2 className="mt-5 text-3xl font-extrabold leading-tight tracking-[-0.025em] text-navy md:text-[2.4rem]">
-                  A small company with a long-term commitment
+                  Built on clinical rigour, trusted by clinicians
                 </h2>
+
               </div>
               <div className="space-y-5 text-[1rem] leading-relaxed text-muted-foreground">
                 <p>
